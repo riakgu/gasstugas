@@ -3418,7 +3418,7 @@ chart-line:
       - activity
       - analytics
       - chart
-      - dashboard
+      - home
       - gain
       - graph
       - increase
@@ -4388,7 +4388,7 @@ columns:
   search:
     terms:
       - browser
-      - dashboard
+      - home
       - organize
       - panes
       - split
@@ -18517,7 +18517,7 @@ tachometer-alt:
   label: Alternate Tachometer
   search:
     terms:
-      - dashboard
+      - home
       - fast
       - odometer
       - speed
