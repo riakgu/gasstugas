@@ -12,10 +12,17 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li
-                    class="sidebar-item  ">
-                    <a href="index.html" class='sidebar-link'>
+                    class="sidebar-item {{ request()->is('home') ? 'active' : '' }}">
+                    <a href="/home" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item {{ request()->is('chatbot') ? 'active' : '' }}">
+                    <a href="/chatbot" class='sidebar-link'>
+                        <i class="bi bi-chat"></i>
+                        <span>Chatbot</span>
                     </a>
                 </li>
             </ul>

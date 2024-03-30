@@ -29,4 +29,8 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::post('/logout', 'doLogout')->middleware('auth')->name('logout');
 });
 
+Route::controller(\App\Http\Controllers\ChatbotController::class)->group(function () {
+    Route::get('/chatbot', 'index')->middleware('auth');
+    Route::post('/chatbot', 'chatbot')->middleware('auth');
+});
 
