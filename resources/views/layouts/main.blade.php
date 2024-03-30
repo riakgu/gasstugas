@@ -7,8 +7,8 @@
     <title>{{ env('APP_NAME') }} - {{$title}}</title>
 
     <link rel="shortcut icon" href="/../assets/images/svg/favicon.svg" type="image/x-icon"/>
-    <link rel="stylesheet" crossorigin href="/../assets/compiled/css/app.css">
-    <link rel="stylesheet" crossorigin href="/../assets/compiled/css/app-dark.css">
+    <link rel="stylesheet" crossorigin href="/../assets/css/app.css">
+    <link rel="stylesheet" crossorigin href="/../assets/css/app-dark.css">
 
     @yield('style')
 
@@ -16,7 +16,7 @@
 
 <body>
 <div id="app">
-    <script src="assets/static/js/initTheme.js"></script>
+    <script src="/../assets/js/initTheme.js"></script>
 
 
     @include('layouts.partials.sidebar')
@@ -32,10 +32,9 @@
     </div>
 
 </div>
-<script src="/../assets/static/js/components/dark.js"></script>
-<script src="/../assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/../assets/js/components/dark.js"></script>
 
-<script src="/../assets/compiled/js/app.js"></script>
+<script src="/../assets/js/app.js"></script>
 
 @yield('script')
 

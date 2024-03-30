@@ -3,7 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="logo">
-                    <a href="index.html"><img src="/../assets/static/images/logo/logo.svg" style="height: 30px" alt="Logo" srcset=""></a>
+                    <a href="#"><img src="/../assets/images/svg/logo.svg" style="height: 30px" alt="Logo" srcset=""></a>
                 </div>
             </div>
         </div>

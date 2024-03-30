@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('style')
-    <link rel="stylesheet" href="/../assets/compiled/css/chatbot.css" />
+    <link rel="stylesheet" href="/../assets/css/chatbot.css" />
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
                             <div class="card-header">
                                 <div class="media d-flex align-items-center">
                                     <div class="avatar me-3">
-                                        <img src="/../assets/static/images/ChatGPT_logo.svg" alt="" srcset="" />
+                                        <img src="/../assets/images/svg/ChatGPT_logo.svg" alt="" srcset="" />
                                         <span class="avatar-status bg-success"></span>
                                     </div>
                                     <div class="name flex-grow-1">
@@ -75,5 +75,5 @@
 
 @section('script')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/../assets/compiled/js/chatbot.js"></script>
+    <script src="/../assets/js/chatbot.js"></script>
 @endsection

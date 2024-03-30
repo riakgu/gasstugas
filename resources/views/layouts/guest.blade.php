@@ -7,16 +7,16 @@
     <title>{{ env('APP_NAME') }} - {{$title}}</title>
 
     <link rel="shortcut icon" href="/../assets/images/svg/favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" crossorigin href="/../assets/compiled/css/app.css">
-    <link rel="stylesheet" crossorigin href="/../assets/compiled/css/app-dark.css">
-    <link rel="stylesheet" crossorigin href="/../assets/compiled/css/auth.css">
+    <link rel="stylesheet" crossorigin href="/../assets/css/app.css">
+    <link rel="stylesheet" crossorigin href="/../assets/css/app-dark.css">
+    <link rel="stylesheet" crossorigin href="/../assets/css/auth.css">
 
     @yield('style')
 
 </head>
 
 <body>
-<script src="/../assets/static/js/initTheme.js"></script>
+<script src="/../assets/js/initTheme.js"></script>
 <div id="auth">
     <div class="row h-100">
         <div class="col-lg-5 col-12">
