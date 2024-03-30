@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 34" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" xmlns:v="https://vecta.io/nano"><path d="M3 27.472c0 4.409 6.18 5.552 13.5 5.552 7.281 0 13.5-1.103 13.5-5.513s-6.179-5.552-13.5-5.552c-7.281 0-13.5 1.103-13.5 5.513z" fill="#435ebe" fill-rule="nonzero"/><circle cx="16.5" cy="8.8" r="8.8" fill="#41bbdd"/></svg>
+<svg width="129" height="90" viewBox="0 0 129 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.9981 38.5709L70.7108 64.2836L44.9981 90L0 45.0019L44.9981 0.00374984L56.2477 11.2533L49.8204 17.6805L44.9981 12.8582L12.8582 44.9981L44.9981 77.138L57.9201 64.2161L38.5671 44.9981L44.9981 38.5709ZM83.569 0L128.567 44.9981L83.569 89.9963L72.3195 78.7467L78.7467 72.3195L83.569 77.1418L115.709 45.0019L83.569 12.862L70.6471 25.7839L90 45.0019L83.5728 51.4291L57.8601 25.7164L83.569 0Z" fill="url(#paint0_linear_508_90)"/>
+<defs>
+<linearGradient id="paint0_linear_508_90" x1="0" y1="0" x2="11652.1" y2="5433.48" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A0E1D"/>
+<stop offset="1" stop-color="#B39984"/>
+</linearGradient>
+</defs>
+</svg>
