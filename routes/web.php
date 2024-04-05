@@ -34,3 +34,8 @@ Route::controller(\App\Http\Controllers\ChatbotController::class)->group(functio
     Route::post('/chatbot', 'chatbot')->middleware('auth');
 });
 
+Route::get('/tasks', function () {
+    return view('tasks.index', [
+        'title' => 'Tasks'
+    ]);
+})->middleware('auth');

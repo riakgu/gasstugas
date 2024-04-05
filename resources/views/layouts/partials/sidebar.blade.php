@@ -19,6 +19,13 @@
                     </a>
                 </li>
                 <li
+                    class="sidebar-item {{ request()->is('tasks') ? 'active' : '' }}">
+                    <a href="/tasks" class='sidebar-link'>
+                        <i class="bi bi-book-half"></i>
+                        <span>Tasks</span>
+                    </a>
+                </li>
+                <li
                     class="sidebar-item {{ request()->is('chatbot') ? 'active' : '' }}">
                     <a href="/chatbot" class='sidebar-link'>
                         <i class="bi bi-chat"></i>
