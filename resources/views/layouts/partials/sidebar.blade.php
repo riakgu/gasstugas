@@ -21,17 +21,41 @@
                 <li
                     class="sidebar-item {{ request()->is('tasks') ? 'active' : '' }}">
                     <a href="/tasks" class='sidebar-link'>
-                        <i class="bi bi-book-half"></i>
+                        <i class="bi bi-clipboard-fill"></i>
                         <span>Tasks</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ request()->is('categories') ? 'active' : '' }}">
+                    <a href="/categories" class='sidebar-link'>
+                        <i class="bi bi-tag-fill"></i> <span>Categories</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item {{ request()->is('calendar') ? 'active' : '' }}">
+                    <a href="/calendar" class='sidebar-link'>
+                        <i class="bi bi-calendar-fill"></i>
+                        <span>Calendar</span>
                     </a>
                 </li>
                 <li
                     class="sidebar-item {{ request()->is('chatbot') ? 'active' : '' }}">
                     <a href="/chatbot" class='sidebar-link'>
-                        <i class="bi bi-chat"></i>
+                        <i class="bi bi-chat-fill"></i>
                         <span>Chatbot</span>
                     </a>
                 </li>
+
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="sidebar-title">Admin</li>
+                    <li
+                        class="sidebar-item {{ request()->is('users') ? 'active' : '' }}">
+                        <a href="/users" class='sidebar-link'>
+                            <i class="bi bi-person-fill"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </div>
     </div>
