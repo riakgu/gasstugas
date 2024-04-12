@@ -35,3 +35,9 @@ Route::controller(\App\Http\Controllers\ChatbotController::class)->group(functio
 });
 
 Route::resource('tasks', \App\Http\Controllers\TaskController::class)->middleware('auth');
+
+Route::controller(\App\Http\Controllers\SettingsController::class)->group(function () {
+    Route::get('/settings', 'index')->middleware('auth');
+    Route::put('/settings/profile', 'profile')->middleware('auth');
+    Route::put('/settings/password', 'password')->middleware('auth');
+});
