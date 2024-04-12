@@ -34,8 +34,10 @@ Route::controller(\App\Http\Controllers\ChatbotController::class)->group(functio
     Route::post('/chatbot', 'chatbot')->middleware('auth');
 });
 
-Route::get('/tasks', function () {
-    return view('tasks.index', [
-        'title' => 'Tasks'
-    ]);
-})->middleware('auth');
+Route::resource('tasks', \App\Http\Controllers\TaskController::class)->middleware('auth');
+
+Route::controller(\App\Http\Controllers\SettingsController::class)->group(function () {
+    Route::get('/settings', 'index')->middleware('auth');
+    Route::put('/settings/profile', 'profile')->middleware('auth');
+    Route::put('/settings/password', 'password')->middleware('auth');
+});
