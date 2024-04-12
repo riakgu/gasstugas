@@ -34,6 +34,8 @@
 
 @yield('script')
 
+@include('components.alert')
+
 </body>
 
 </html>
