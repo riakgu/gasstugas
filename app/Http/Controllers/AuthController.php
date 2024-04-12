@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 
-    public function login() {
-        $data = [
+    public function showLoginForm()
+    {
+        return view('auth.login', [
             'title' => 'Login'
-        ];
-
-        return view('auth.login', $data);
+        ]);
     }
 
-    public function doLogin(Request $request): RedirectResponse {
+    public function login(Request $request): RedirectResponse
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -27,46 +27,46 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('home')->with('success', 'Login success!' );
+            return redirect()->intended('home')->with('success', 'Login successful!');
         }
 
         return back()->withErrors([
-            'error' => 'The provided credentials do not match our records.'
+            'error' => 'The provided credentials do not match our records.',
         ]);
     }
 
-    public function register() {
-        $data = [
+    public function showRegistrationForm()
+    {
+        return view('auth.register', [
             'title' => 'Register'
-        ];
-
-        return view('auth.register', $data);
+        ]);
     }
 
-    public function doRegister(Request $request): RedirectResponse {
+    public function register(Request $request): RedirectResponse
+    {
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => [
-                'required',
-                'confirmed',
-                'min:8',
-            ],
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users'],
+            'phone' => ['required', 'unique:users', 'regex:/(08)[0-9]{9}/'],
+            'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        $validated['password'] = Hash::make($validated['password']);
-        User::query()->create($validated);
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'password' => Hash::make($validated['password']),
+        ]);
 
-        return redirect('/login')->with('success', 'Registration success!' );
+        return redirect('/login')->with('success', 'Registration successful!');
     }
 
-    public function doLogout(Request $request): RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Logout successful!');
     }
 }
