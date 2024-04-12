@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('style')
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
 @endsection
 
 @section('content')
@@ -46,5 +46,6 @@
 @endsection
 
 @section('script')
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="/../assets/js/pages/sweetalert2.js"></script>
 @endsection
