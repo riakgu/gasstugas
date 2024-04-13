@@ -42,11 +42,20 @@ class SendTaskNotification extends Command
     {
         $user = $task->user;
 
+        $message = "Halo {$user->name},\n\n"
+            . "Kami ingin memberitahu bahwa tugas berikut belum selesai dan mendekati batas waktu:\n\n"
+            . "Nama Tugas: {$task->task_name}\n"
+            . "Deskripsi: {$task->description}\n"
+            . "Batas Waktu: {$task->deadline}\n\n"
+            . "Terima kasih atas perhatian dan kerja keras Anda.\n\n"
+            . "Salam,\n"
+            . "GasstuGas";
+
         $response = Http::withHeaders([
             'Authorization' => env('FONNTE_TOKEN'),
         ])->post('https://api.fonnte.com/send', [
             'target' => $task->user->phone,
-            'message' => "Reminder: Task '{$task->task_name}' is due tomorrow.",
+            'message' => $message,
             'countryCode' => '62',
         ]);
 
