@@ -39,5 +39,6 @@ php artisan migrate --seed
 5. Jalankan server
 
 ```bash
+php artisan schedule:work
 php artisan serve
 ```
