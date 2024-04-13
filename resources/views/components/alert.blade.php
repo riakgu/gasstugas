@@ -14,18 +14,17 @@
 </script>
 
 <script>
-    // Menambahkan event listener ke setiap tombol hapus tugas
     const deleteButtons = document.querySelectorAll('.delete-task-btn');
 
     deleteButtons.forEach(button => {
         button.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah tindakan default (penghapusan langsung)
-            const taskForm = button.parentElement; // Form yang berisi tombol yang ditekan
+            e.preventDefault();
+            const taskForm = button.parentElement;
 
             Swal2.fire({
                 icon: 'question',
                 title: 'Confirmation',
-                text: 'Are you sure you want to delete this task?',
+                text: 'Are you sure you want to delete?',
                 showCancelButton: true,
                 confirmButtonColor: '#5a0e1d',
                 cancelButtonColor: '#3085d6',
@@ -33,7 +32,7 @@
                 cancelButtonText: 'Cancel'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    taskForm.submit(); // Melanjutkan penghapusan jika dikonfirmasi
+                    taskForm.submit();
                 }
             });
         });
