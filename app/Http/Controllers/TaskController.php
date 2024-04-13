@@ -7,134 +7,76 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $data = [
-            "title" => "Tasks",
-            'tasks' => Task::query()->where('user_id', auth()->user()->id)->get(),
-        ];
+        $tasks = auth()->user()->tasks;
 
-        // Mengembalikan view daftar tugas dengan data yang diperoleh
-        return view('tasks.index', $data);
+        return view('tasks.index', [
+            'title' => 'Tasks',
+            'tasks' => $tasks,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $data = [
-            "title" => "Create Task",
-        ];
+//        $categories = auth()->user()->categories;
 
-        // Mengembalikan view formulir pembuatan tugas
-        return view('tasks.create', $data);
+        return view('tasks.create', [
+            'title' => 'Create Task',
+//            'categories' => $categories,
+        ]);
     }
 
-    /**
-     * Menyimpan tugas baru ke dalam database.
-     *
-     * @param Request $request Data request dari formulir.
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-        // Validasi input formulir
         $validated = $request->validate([
-            'task_name' => 'required',
-            'description' => 'required',
-            
-            'deadline' => 'required',
-            'status' => 'required',
+//            'category_id' => ['required'],
+            'task_name' => ['required'],
+            'description' => ['required'],
+            'deadline' => ['required', 'date', 'after_or_equal:today'],
+            'status' => ['required'],
         ]);
 
-        // Menambahkan user_id ke data yang divalidasi
-        $validated['user_id'] = auth()->user()->id;
+        $task = auth()->user()->tasks()->create($validated);
 
-        // Membuat tugas baru
-        Task::query()->create($validated);
-
-        // Redirect kembali ke daftar tugas dengan pesan sukses
-        return redirect('/tasks')->with('success', 'Task has been created!' );
+        return redirect('/tasks')->with('success', 'Task has been created!');
     }
 
-    /**
-     * Menampilkan tugas tertentu.
-     *
-     * @param Task $task Tugas yang akan ditampilkan.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function show(Task $task)
     {
-        $data = [
-            'title' => 'Show Task',
-            'task' => $task,
-        ];
-
-        // Mengembalikan view detail tugas
-        return view('tasks.show', $data);
+        //
     }
 
-    /**
-     * Menampilkan formulir untuk mengedit tugas tertentu.
-     *
-     * @param Task $task Tugas yang akan diedit.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function edit(Task $task)
     {
-        $data = [
+//        $categories = auth()->user()->categories;
+
+        return view('tasks.edit', [
             'title' => 'Edit Task',
             'task' => $task,
-        ];
-
-        // Mengembalikan view formulir edit tugas
-        return view('tasks.edit', $data);
+//            'categories' => $categories,
+        ]);
     }
 
-    /**
-     * Memperbarui tugas tertentu di dalam database.
-     *
-     * @param Request $request Data request dari formulir.
-     * @param Task $task Tugas yang akan diperbarui.
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(Request $request, Task $task)
     {
-        // Validasi input formulir
         $validated = $request->validate([
-            'task_name' => 'required',
-            'description' => 'required',
-            'deadline' => 'required',
-            'status' => 'required',
+//            'category_id' => ['required'],
+            'task_name' => ['required'],
+            'description' => ['required'],
+            'deadline' => ['required', 'date', 'after_or_equal:today'],
+            'status' => ['required'],
         ]);
 
-        // Menambahkan user_id ke data yang divalidasi
-        $validated['user_id'] = auth()->user()->id;
+        $task->update($validated);
 
-        // Memperbarui tugas
-        $task::query()->where('task_id', $task->task_id)
-            ->update($validated);
-
-        // Redirect kembali ke daftar tugas dengan pesan sukses
-        return redirect('/tasks')->with('success', 'Task has been updated!' );
+        return redirect('/tasks')->with('success', 'Task has been updated!');
     }
 
-    /**
-     * Menghapus tugas tertentu dari database.
-     *
-     * @param Task $task Tugas yang akan dihapus.
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(Task $task)
     {
-        // Menghapus tugas
-        Task::destroy($task->task_id);
+        $task->delete();
 
-        // Redirect kembali ke daftar tugas dengan pesan sukses
-        return redirect('/tasks')->with('success', 'Task has been deleted!' );
+        return redirect('/tasks')->with('success', 'Task has been deleted!');
     }
 }
