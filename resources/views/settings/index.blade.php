@@ -57,6 +57,22 @@
                                                     @enderror
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="number"
+                                                           class="form-control @error('phone') is-invalid @enderror"
+                                                           placeholder="08xxxxxxxxxx" name="phone"
+                                                           value="{{ auth()->user()->phone }}" />
+                                                    @error('phone')
+                                                    <div class="invalid-feedback">
+                                                        <i class="bx bx-radio-circle"></i>
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                             <div class="col-12 mt-3 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">
                                                     Submit
@@ -84,19 +100,6 @@
                                         @method('put')
                                         @csrf
                                         <div class="row">
-                                            <div class="col-md-12 col-12">
-                                                <div class="form-group">
-                                                    <label for="current_password">Current Password</label>
-                                                    <input type="password" class="form-control @error('current_password') is-invalid @enderror"  placeholder="Current Password"
-                                                           name="current_password" />
-                                                    @error('current_password')
-                                                    <div class="invalid-feedback">
-                                                        <i class="bx bx-radio-circle"></i>
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
 
                                             <div class="col-md-12 col-12">
                                                 <div class="form-group">
@@ -144,21 +147,5 @@
 
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
-    <script src="/../assets/js/sweetalert2.js"></script>
-    <script>
-        @if (session('success'))
-        Swal2.fire({
-            icon: "success",
-            title: "Success",
-            text: "{{ session('success') }}",
-        })
-        @endif
-        @if (session('error'))
-        Swal2.fire({
-            icon: "error",
-            title: "Error",
-            text: "{{ session('error') }}",
-        })
-        @endif
-    </script>
+    <script src="/../assets/js/pages/sweetalert2.js"></script>
 @endsection
