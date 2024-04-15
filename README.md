@@ -8,7 +8,7 @@
 ```bash
 git clone https://github.com/riakgu/GasstuGas.git
 cd GasstuGas
-composer install
+composer update
 cp .env.example .env
 php artisan key:generate
 ```
