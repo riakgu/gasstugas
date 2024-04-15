@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
         Route::put('/settings/password', 'updatePassword');
     });
 
+    Route::get('/calendar', [\App\Http\Controllers\CalendarController::class, 'index'])->name('calendar.index');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
@@ -37,4 +39,5 @@ Route::middleware('guest')->group(function () {
         Route::get('/register', 'showRegistrationForm')->name('register');
         Route::post('/register', 'register');
     });
+
 });
