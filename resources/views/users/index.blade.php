@@ -22,9 +22,9 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4>Task List</h4>
-                        <a href="/tasks/create" class="btn btn-secondary me-1 mb-1">
-                            <i data-feather="edit"></i> Create Task
+                        <h4>User List</h4>
+                        <a href="/users/create" class="btn btn-secondary me-1 mb-1">
+                            <i data-feather="edit"></i> Create User
                         </a>
                     </div>
 
@@ -32,39 +32,30 @@
                         <table class="table table-striped" id="table1">
                             <thead>
                             <tr>
-                                <th>Task Name</th>
-{{--                                <th>Category</th>--}}
-                                <th>Description</th>
-                                <th>Deadline</th>
-                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Roles</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($tasks as $task)
+                            @foreach ($users as $user)
                                 <tr>
-                                    <td>{{ $task->task_name }}</td>
-{{--                                    <td>{{ $task->category->category_name }}</td>--}}
-                                    <td>{{ $task->description }}</td>
-                                    <td>{{ $task->deadline }}</td>
-                                    @if ($task->status == 'TO_DO')
-                                        <td>
-                                            <span class="badge bg-secondary">To Do</span>
-                                        </td>
-                                    @elseif($task->status == 'IN_PROGRESS')
-                                        <td>
-                                            <span class="badge bg-info">In Progress</span>
-                                        </td>
-                                    @elseif($task->status == 'DONE')
-                                        <td>
-                                            <span class="badge bg-success">Done</span>
-                                        </td>
+                                    <td>{{ $user->name }}</td>
+{{--                                    <td>{{ $user->category->category_name }}</td>--}}
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    @if($user->hasRole('admin'))
+                                        <td>Administrator</td>
+                                    @elseif($user->hasRole('user'))
+                                        <td>User</td>
                                     @endif
                                     <td>
-                                        <a href="/tasks/{{ $task->id }}/edit" class="btn icon btn-primary"
+                                        <a href="/users/{{ $user->id }}/edit" class="btn icon btn-primary"
                                         ><i class="bi bi-pencil"></i
                                             ></a>
-                                        <form action="/tasks/{{ $task->id }}" method="post" class="d-inline delete-task">
+                                        <form action="/users/{{ $user->id }}" method="post" class="d-inline delete-task">
                                             @method('delete')
                                             @csrf
                                             <button class="btn icon btn-danger delete-task-btn">

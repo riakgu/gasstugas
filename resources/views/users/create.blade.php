@@ -22,17 +22,17 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form action="/tasks" method="post" class="form">
+                                    <form action="/users" method="post" class="form">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="task_name">Task Name</label>
+                                                    <label for="name">Name</label>
                                                     <input type="text"
-                                                           class="form-control @error('task_name') is-invalid @enderror"
-                                                           placeholder="Task Name" name="task_name"
-                                                           value="{{ old('task_name') }}" />
-                                                    @error('task_name')
+                                                           class="form-control @error('name') is-invalid @enderror"
+                                                           placeholder="Name" name="name"
+                                                           value="{{ old('name') }}" />
+                                                    @error('name')
                                                     <div class="invalid-feedback">
                                                         <i class="bx bx-radio-circle"></i>
                                                         {{ $message }}
@@ -42,12 +42,12 @@
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="deadline">Deadline</label>
+                                                    <label for="email">Email</label>
                                                     <input type="text"
-                                                           class="form-control flatpickr-no-config @error('deadline') is-invalid @enderror"
-                                                           placeholder="Select date.." name="deadline"
-                                                           value="{{ old('deadline') }}" />
-                                                    @error('deadline')
+                                                           class="form-control @error('email') is-invalid @enderror"
+                                                           placeholder="Email" name="email"
+                                                           value="{{ old('email') }}" />
+                                                    @error('email')
                                                     <div class="invalid-feedback">
                                                         <i class="bx bx-radio-circle"></i>
                                                         {{ $message }}
@@ -56,46 +56,13 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
-                                                <label for="last-name-column">Category</label>
-                                                <div class="input-group mb-3">
-                                                    <label class="input-group-text" for="category_id">Options</label>
-                                                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">>
-{{--                                                        @foreach($categories as $category)--}}
-{{--                                                            <option value="{{$category->id}}">{{$category->category_name}}</option>--}}
-{{--                                                        @endforeach--}}
-                                                    </select>
-                                                    @error('category_id')
-                                                    <div class="invalid-feedback">
-                                                        <i class="bx bx-radio-circle"></i>
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <label for="last-name-column">Status</label>
-                                                <div class="input-group mb-3">
-                                                    <label class="input-group-text" for="status">Options</label>
-                                                    <select class="form-select @error('status') is-invalid @enderror" name="status">>
-                                                        <option value="TO_DO" {{ old('status') == 'TO_DO' ? 'selected' : '' }}>To Do</option>
-                                                        <option value="IN_PROGRESS" {{ old('status') == 'IN_PROGRESS' ? 'selected' : '' }}>In Progress</option>
-                                                        <option value="DONE" {{ old('status') == 'DONE' ? 'selected' : '' }}>Done</option>
-                                                    </select>
-                                                    @error('status')
-                                                    <div class="invalid-feedback">
-                                                        <i class="bx bx-radio-circle"></i>
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 col-12">
                                                 <div class="form-group">
-                                                    <label for="description">Description</label>
-                                                    <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Description" name="description"
-                                                              rows="3">{{ old('description') }}</textarea>
-                                                    @error('description')
+                                                    <label for="phone">Phone</label>
+                                                    <input type="text"
+                                                           class="form-control @error('phone') is-invalid @enderror"
+                                                           placeholder="Phone" name="phone"
+                                                           value="{{ old('phone') }}" />
+                                                    @error('phone')
                                                     <div class="invalid-feedback">
                                                         <i class="bx bx-radio-circle"></i>
                                                         {{ $message }}
@@ -103,6 +70,53 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="text"
+                                                           class="form-control @error('password') is-invalid @enderror"
+                                                           placeholder="Password" name="password"
+                                                           value="{{ old('password') }}" />
+                                                    @error('password')
+                                                    <div class="invalid-feedback">
+                                                        <i class="bx bx-radio-circle"></i>
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="password_confirmation">Confirm Password</label>
+                                                    <input type="text"
+                                                           class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                           placeholder="Confirm Password" name="password_confirmation"
+                                                           value="{{ old('password_confirmation') }}" />
+                                                    @error('password_confirmation')
+                                                    <div class="invalid-feedback">
+                                                        <i class="bx bx-radio-circle"></i>
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-md-6 col-12">
+                                                <label for="last-name-column">Roles</label>
+                                                <div class="input-group mb-3">
+                                                    <label class="input-group-text" for="roles">Options</label>
+                                                    <select class="form-select @error('roles') is-invalid @enderror" name="roles">>
+                                                        <option value="TO_DO" {{ old('roles') == 'TO_DO' ? 'selected' : '' }}>To Do</option>
+                                                        <option value="IN_PROGRESS" {{ old('roles') == 'IN_PROGRESS' ? 'selected' : '' }}>In Progress</option>
+                                                        <option value="DONE" {{ old('roles') == 'DONE' ? 'selected' : '' }}>Done</option>
+                                                    </select>
+                                                    @error('roles')
+                                                    <div class="invalid-feedback">
+                                                        <i class="bx bx-radio-circle"></i>
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div> --}}
                                             <div class="col-12 mt-3 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">
                                                     Submit
