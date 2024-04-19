@@ -30,8 +30,6 @@
     </div>
 </div>
 
-<script src="/../assets/js/app.js"></script>
-
 @yield('script')
 
 @include('components.alert')
