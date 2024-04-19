@@ -3,81 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Task;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        #$categories = auth()->user()->categories;
+        $categories = auth()->user()->categories;
 
         return view('categories.index', [
-            'title' => 'Category',
-            #'categories' => $categories,
+            'title' => 'Categories',
+            'categories' => $categories,
         ]);
     }
 
     public function create()
     {
-//        $categories = auth()->user()->categories;
-
         return view('categories.create', [
             'title' => 'Create Category',
-//            'categories' => $categories,
         ]);
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-//            'category_id' => ['required'],
-            'task_name' => ['required'],
-            'description' => ['required'],
-            'deadline' => ['required', 'date', 'after_or_equal:today'],
-            'status' => ['required'],
+            'category_name' => 'required|string|max:255',
+            'description' => 'required|string',
         ]);
 
-        $task = auth()->user()->tasks()->create($validated);
+        $category = auth()->user()->categories()->create($validated);
 
-        return redirect('/tasks')->with('success', 'Task has been created!');
+        return redirect('/categories')->with('success', 'Category has been created!');
     }
 
-    public function show(Task $task)
+    public function show(Category $category)
     {
         //
     }
 
-    public function edit(Task $task)
+    public function edit(Category $category)
     {
-//        $categories = auth()->user()->categories;
-
-        return view('tasks.edit', [
-            'title' => 'Edit Task',
-            'task' => $task,
-//            'categories' => $categories,
+        return view('categories.edit', [
+            'title' => 'Edit Category',
+            'category' => $category,
         ]);
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
-//            'category_id' => ['required'],
-            'task_name' => ['required'],
-            'description' => ['required'],
-            'deadline' => ['required', 'date', 'after_or_equal:today'],
-            'status' => ['required'],
+            'category_name' => 'required|string|max:255',
+            'description' => 'required|string',
         ]);
 
-        $task->update($validated);
+        $category->update($validated);
 
-        return redirect('/tasks')->with('success', 'Task has been updated!');
+        return redirect('/categories')->with('success', 'Category has been updated!');
     }
 
-    public function destroy(Task $task)
+    public function destroy(Category $category)
     {
-        $task->delete();
+        $category->delete();
 
-        return redirect('/tasks')->with('success', 'Task has been deleted!');
+        return redirect('/categories')->with('success', 'Category has been deleted!');
     }
 }
