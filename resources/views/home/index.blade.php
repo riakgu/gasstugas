@@ -87,7 +87,7 @@
                             <thead>
                             <tr>
                                 <th>Task Name</th>
-{{--                                <th>Category</th>--}}
+                                <th>Category</th>
                                 <th>Description</th>
                                 <th>Deadline</th>
                                 <th>Status</th>
@@ -98,7 +98,7 @@
                             @foreach ($tasks as $task)
                                 <tr>
                                     <td>{{ $task->task_name }}</td>
-{{--                                    <td>{{ $task->category->category_name }}</td>--}}
+                                    <td>{{ $task->category->category_name }}</td>
                                     <td>{{ $task->description }}</td>
                                     <td>{{ $task->deadline }}</td>
                                     @if ($task->status == 'TO_DO')
