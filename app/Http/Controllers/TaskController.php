@@ -19,18 +19,18 @@ class TaskController extends Controller
 
     public function create()
     {
-//        $categories = auth()->user()->categories;
+        $categories = auth()->user()->categories;
 
         return view('tasks.create', [
             'title' => 'Create Task',
-//            'categories' => $categories,
+            'categories' => $categories,
         ]);
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-//            'category_id' => ['required'],
+            'category_id' => ['required'],
             'task_name' => ['required'],
             'description' => ['required'],
             'deadline' => ['required', 'date', 'after_or_equal:today'],
@@ -49,19 +49,19 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-//        $categories = auth()->user()->categories;
+        $categories = auth()->user()->categories;
 
         return view('tasks.edit', [
             'title' => 'Edit Task',
             'task' => $task,
-//            'categories' => $categories,
+            'categories' => $categories,
         ]);
     }
 
     public function update(Request $request, Task $task)
     {
         $validated = $request->validate([
-//            'category_id' => ['required'],
+            'category_id' => ['required'],
             'task_name' => ['required'],
             'description' => ['required'],
             'deadline' => ['required', 'date', 'after_or_equal:today'],
