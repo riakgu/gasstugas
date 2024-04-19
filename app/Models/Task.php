@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Task extends Model
 {
-
     protected $fillable = [
         'user_id',
+        'category_id',
         'task_name',
         'description',
         'started',
@@ -22,6 +22,11 @@ class Task extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class,'category_id');
     }
 
 }
