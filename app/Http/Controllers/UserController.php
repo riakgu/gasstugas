@@ -55,7 +55,7 @@ class UserController extends Controller
         ]);
 
         $user->assignRole($validated['role']);
-        // $user->createDefaultCategories();
+        $user->createDefaultCategories();
 
         return redirect('/users')->with('success', 'User has been created!');
     }

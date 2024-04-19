@@ -59,6 +59,7 @@ class AuthController extends Controller
         ]);
 
         $user->assignRole('user');
+        $user->createDefaultCategories();
 
         return redirect('/login')->with('success', 'Registration successful!');
     }

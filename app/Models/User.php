@@ -54,4 +54,15 @@ class User extends Authenticatable
         });
     }
 
+    public function createDefaultCategories()
+    {
+        $defaultCategories = [
+            ['category_name' => 'Personal', 'description' => 'Kategori yang berhubungan dengan kehidupan pribadi'],
+            ['category_name' => 'Work', 'description' => 'Kategori yang berhubungan dengan pekerjaan'],
+            ['category_name' => 'Education', 'description' => 'Kategori yang berhubungan dengan pendidikan'],
+        ];
+
+        $this->categories()->createMany($defaultCategories);
+    }
+
 }
