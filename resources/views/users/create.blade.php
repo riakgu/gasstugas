@@ -76,7 +76,7 @@
                                                     <label class="input-group-text" for="role">Options</label>
                                                     <select class="form-select @error('role') is-invalid @enderror" name="role">>
                                                         @foreach($roles as $role)
-                                                            <option value="{{$role->name}}">{{$role->name}}</option>
+                                                            <option value="{{$role->name}}" {{ old('role') == $role->name ? 'selected' : '' }}>{{$role->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('role')
