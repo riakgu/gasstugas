@@ -6,6 +6,8 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\CategoryController;
+
 
 Route::get('/', function () {
     return redirect('/login');
@@ -15,6 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('tasks', TaskController::class)->except(['show']);
+    Route::resource('categories', CategoryController::class)->except(['show']);
 
     Route::controller(ChatbotController::class)->group(function () {
         Route::get('/chatbot', 'index')->name('chatbot');
