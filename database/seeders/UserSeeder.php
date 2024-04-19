@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
         $admin->phone = "0812345678900";
         $admin->password = Hash::make('admin');
         $admin->save();
+        $admin->createDefaultCategories();
         $admin->assignRole('admin');
 
         $user = new User();
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
         $user->phone = "0812345678901";
         $user->password = Hash::make('user');
         $user->save();
+        $user->createDefaultCategories();
         $user->assignRole('user');
     }
 }
