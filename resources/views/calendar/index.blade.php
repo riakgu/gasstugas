@@ -36,15 +36,13 @@
                 eventClick: function(info) {
                     var event = info.event;
                     var task = event.extendedProps;
-                    var category = event.category;
 
                     Swal.fire({
                         icon: 'info',
                         title: task.task_name,
                         html:
-                            '<p><strong>Category:</strong> ' + category + '</p>' +
+                            '<p><strong>Category:</strong> ' + task.category.category_name + '</p>' +
                             '<p><strong>Description:</strong> ' + task.description + '</p>' +
-                            '<p><strong>Started:</strong> ' + task.started + '</p>' +
                             '<p><strong>Deadline:</strong> ' + task.deadline + '</p>' +
                             '<p><strong>Status:</strong> ' + task.status + '</p>',
                         confirmButtonText: 'Close'
