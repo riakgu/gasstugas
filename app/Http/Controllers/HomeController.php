@@ -15,7 +15,7 @@ class HomeController extends Controller
         $total_tasks = auth()->user()->tasks()->count();
         $undone_tasks = auth()->user()->tasks()->whereNot('status', 'DONE')->count();
         $total_user = User::all()->count();
-        $total_category = Category::all()->count();
+        $total_category = auth()->user()->categories()->count();
 
         return view('home.index', [
             'title' => 'Home',
