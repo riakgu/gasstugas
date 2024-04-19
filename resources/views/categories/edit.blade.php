@@ -13,7 +13,6 @@
                     <div class="col-12 col-md-6 mb-4 order-md-1 order-last">
                         <h3>{{ $title }}</h3>
                     </div>
-
                 </div>
             </div>
 
@@ -23,18 +22,18 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form action="/tasks/{{$task->id}}" method="post" class="form">
-                                        @method('put')
+                                    <form action="/categories/{{$category->id}}" method="post" class="form">
                                         @csrf
+                                        @method('put')
                                         <div class="row">
-                                            <div class="col-md-6 col-12">
+                                            <div class="col-md-12 col-12">
                                                 <div class="form-group">
-                                                    <label for="task_name">Task Name</label>
+                                                    <label for="title">Category Name</label>
                                                     <input type="text"
-                                                           class="form-control @error('task_name') is-invalid @enderror"
-                                                           placeholder="Task Name" name="task_name"
-                                                           value="{{ old('task_name', $task->task_name) }}" />
-                                                    @error('task_name')
+                                                           class="form-control @error('category_name') is-invalid @enderror"
+                                                           placeholder="Category Name" name="category_name"
+                                                           value="{{ old('category_name', $category->category_name) }}" />
+                                                    @error('category_name')
                                                     <div class="invalid-feedback">
                                                         <i class="bx bx-radio-circle"></i>
                                                         {{ $message }}
@@ -42,64 +41,12 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="deadline">Dedline</label>
-                                                    <input type="text"
-                                                           id="deadline"
-                                                           class="form-control flatpickr-no-config @error('deadline') is-invalid @enderror"
-                                                           placeholder="Select date.." name="deadline"
-                                                           value="{{ old('started', $task->deadline) }}"
-                                                    />
-                                                    @error('deadline')
-                                                    <div class="invalid-feedback">
-                                                        <i class="bx bx-radio-circle"></i>
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <label for="last-name-column">Category</label>
-                                                <div class="input-group mb-3">
-                                                    <label class="input-group-text" for="category_id">Options</label>
-                                                    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">>
-{{--                                                        @foreach($categories as $category)--}}
-{{--                                                            <option value="{{$category->id}}">{{$category->category_name}}</option>--}}
-{{--                                                        @endforeach--}}
-                                                    </select>
-                                                    @error('category_id')
-                                                    <div class="invalid-feedback">
-                                                        <i class="bx bx-radio-circle"></i>
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <label for="last-name-column">Status</label>
-                                                <div class="input-group mb-3">
-                                                    <label class="input-group-text" for="status">Options</label>
-                                                    <select class="form-select @error('status') is-invalid @enderror" name="status">
-                                                        <option value="TO_DO" {{ (old('status', $task->status) == 'TO_DO') ? 'selected' : '' }}>To Do</option>
-                                                        <option value="IN_PROGRESS" {{ (old('status', $task->status) == 'IN_PROGRESS') ? 'selected' : '' }}>In Progress</option>
-                                                        <option value="DONE" {{ (old('status', $task->status) == 'DONE') ? 'selected' : '' }}>Done</option>
-                                                    </select>
-                                                    @error('status')
-                                                    <div class="invalid-feedback">
-                                                        <i class="bx bx-radio-circle"></i>
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
 
                                             <div class="col-md-12 col-12">
                                                 <div class="form-group">
-                                                    <label for="description">Description</label>
+                                                    <label for="content">Description</label>
                                                     <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Description" name="description"
-                                                              rows="3">{{ old('description', $task->description) }}</textarea>
+                                                              rows="3">{{ old('description', $category->description) }}</textarea>
                                                     @error('description')
                                                     <div class="invalid-feedback">
                                                         <i class="bx bx-radio-circle"></i>
@@ -128,6 +75,6 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/../assets/js/pages/date-picker.js"></script>
 @endsection
