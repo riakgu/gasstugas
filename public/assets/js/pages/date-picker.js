@@ -1,8 +1,7 @@
 
 flatpickr('.flatpickr-no-config', {
-    enableTime: false,
-    // dateFormat: "Y-m-d H:i",
-    dateFormat: "Y-m-d",
+    enableTime: true,
+    dateFormat: "Y-m-d H:i:S",
 })
 flatpickr('.flatpickr-always-open', {
     inline: true
