@@ -28,9 +28,8 @@ class SendTaskNotification extends Command
      */
     public function handle()
     {
-        $tasks = Task::where('status', '!=', 'DONE')
+        $tasks = Task::whereNot('status', 'DONE')
             ->whereDate('deadline', today())
-            ->with('user')
             ->get();
 
         foreach ($tasks as $task) {
