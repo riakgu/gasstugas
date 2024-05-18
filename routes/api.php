@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CalendarController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ChatbotController;
 use App\Http\Controllers\API\TaskController;
@@ -34,4 +35,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('tasks', TaskController::class);
     Route::apiResource('categories', CategoryController::class);
     Route::post('/chatbot', [ChatbotController::class, 'chatbot']);
+    Route::get('/calendar', [CalendarController::class, 'calendar']);
 });
