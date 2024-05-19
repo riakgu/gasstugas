@@ -30,14 +30,24 @@ class ChatbotController extends Controller
                 'frequency_penalty' => 0.52,
                 'presence_penalty' => 0.5,
                 'stop' => ['11.']
-            ])->json();
-
-            return response()->json([
-                'message' => $response['choices'][0]['message']['content']
             ]);
+
+            if ($response->successful()) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => $response->json()['choices'][0]['message']['content'],
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => $response->json()['error']['message'],
+                ], $response->status());
+            }
         } catch (\Exception $e) {
             return response()->json([
-                'error' => $e->getMessage()
+                'status' => 'error',
+                'message' => 'An error occurred while communicating with the chatbot API.',
+                'details' => $e->getMessage(),
             ], 500);
         }
     }

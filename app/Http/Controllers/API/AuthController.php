@@ -14,6 +14,23 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function index(Request $request): JsonResponse
+    {
+        $user = auth()->user();
+
+        if ($user) {
+            return response()->json([
+                'status' => 'success',
+                'data' => new UserResource($user),
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthenticated',
+            ], 401);
+        }
+    }
+
     public function register(RegisterRequest $request): JsonResponse
     {
         $validated = $request->validated();
@@ -28,10 +45,14 @@ class AuthController extends Controller
         $user->assignRole('user');
         $user->createDefaultCategories();
 
-        return (new UserResource($user))->response()->setStatusCode(201);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User registered successfully',
+            'data' => new UserResource($user),
+        ], 201);
     }
 
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request): JsonResponse
     {
         $credentials = $request->validated();
 
@@ -39,15 +60,18 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createToken('auth_token')->plainTextToken;
 
-            return (new UserResource($user))->additional([
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Login successful',
                 'data' => [
                     'token' => $token,
                 ],
-            ]);
+            ], 200);
         }
 
         return response()->json([
-            "message" => "The provided credentials do not match our records."
+            'status' => 'error',
+            'message' => 'The provided credentials do not match our records.',
         ], 401);
     }
 
@@ -56,7 +80,8 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
+            'status' => 'success',
             'message' => 'Logged out successfully',
-        ]);
+        ], 200);
     }
 }

@@ -22,7 +22,8 @@ class CalendarController extends Controller
         });
 
         return response()->json([
-            'events' => $events,
-        ]);
+            'status' => 'success',
+            'events' => $events->groupBy('deadline'),
+        ], 200);
     }
 }
