@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('style')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" type="text/css">
-    <link rel="stylesheet" href="/../assets/css/datatable.css" />
+    <link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/css/datatable.css" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
 @endsection
@@ -88,8 +88,8 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
-    <script src="/../assets/js/pages/datatable.js"></script>
+    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="assets/js/pages/datatable.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
     <script src="/../assets/js/pages/sweetalert2.js"></script>
