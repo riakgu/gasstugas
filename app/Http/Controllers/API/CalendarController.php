@@ -16,7 +16,7 @@ class CalendarController extends Controller
                 'task_name' => $task->task_name,
                 'category' => $task->category->category_name,
                 'description' => $task->description,
-                'deadline' => $task->deadline,
+                'deadline' => date('Y-m-d', strtotime($task->deadline)),
                 'status' => $task->status
             ];
         });
