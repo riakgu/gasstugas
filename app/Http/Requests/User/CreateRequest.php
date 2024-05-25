@@ -24,10 +24,10 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users', 'max:255'],
+            'name' => ['required'],
+            'email' => ['required', 'email', 'unique:users'],
             'phone' => ['required', 'regex:/(08)[0-9]{9}/', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'min:8'],
             'role' => ['required', 'in:admin,user'],
         ];
     }

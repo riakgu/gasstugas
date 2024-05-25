@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CalendarController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ChatbotController;
@@ -23,10 +24,14 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('/auth', [App\Http\Controllers\API\AuthController::class, 'index'])->middleware('auth:sanctum');
-Route::post('/auth/register', [App\Http\Controllers\API\AuthController::class, 'register']);
-Route::post('/auth/login', [App\Http\Controllers\API\AuthController::class, 'login']);
-Route::post('/auth/logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/auth', 'index')->middleware('auth:sanctum');
+    Route::post('/auth/register', 'register');
+    Route::post('/auth/login', 'login');
+    Route::post('/auth/logout', 'logout')->middleware('auth:sanctum');
+    Route::put('/auth/update-profile', 'updateProfile')->middleware('auth:sanctum');
+    Route::put('/auth/change-password', 'changePassword')->middleware('auth:sanctum');
+});
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('users', UserController::class);
