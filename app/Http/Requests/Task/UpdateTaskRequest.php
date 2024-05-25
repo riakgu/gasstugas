@@ -27,8 +27,8 @@ class UpdateTaskRequest extends FormRequest
             'category_id' => ['required'],
             'task_name' => ['required'],
             'description' => ['required'],
-            'deadline' => ['required', 'date', 'after_or_equal:today'],
-            'status' => ['required'],
+            'deadline' => ['required', 'date'],
+            'status' => ['required', 'in:TO_DO,IN_PROGRESS,DONE'],
         ];
     }
 
