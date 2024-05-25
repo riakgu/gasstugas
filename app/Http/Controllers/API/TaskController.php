@@ -35,7 +35,7 @@ class TaskController extends Controller
 
     public function show(Task $task): JsonResponse
     {
-        if (auth()->user()->id !== $task->user_id) {
+        if ((int)auth()->user()->id !== (int)$task->user_id) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',
@@ -50,7 +50,7 @@ class TaskController extends Controller
 
     public function update(UpdateTaskRequest $request, Task $task): JsonResponse
     {
-        if (auth()->user()->id !== $task->user_id) {
+        if ((int)auth()->user()->id !== (int)$task->user_id) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',
@@ -69,7 +69,7 @@ class TaskController extends Controller
 
     public function destroy(Task $task): JsonResponse
     {
-        if (auth()->user()->id !== $task->user_id) {
+        if ((int)auth()->user()->id !== (int)$task->user_id) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',

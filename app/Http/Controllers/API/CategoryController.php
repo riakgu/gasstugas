@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
     public function show(Category $category): JsonResponse
     {
-        if (auth()->user()->id !== $category->user_id) {
+        if ((int)auth()->user()->id !== (int)$category->user_id) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',
@@ -50,7 +50,7 @@ class CategoryController extends Controller
 
     public function update(UpdateCategoryRequest $request, Category $category): JsonResponse
     {
-        if (auth()->user()->id !== $category->user_id) {
+        if ((int)auth()->user()->id !== (int)$category->user_id) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',
@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): JsonResponse
     {
-        if (auth()->user()->id !== $category->user_id) {
+        if ((int)auth()->user()->id !== (int)$category->user_id) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',
